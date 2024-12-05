@@ -1,9 +1,4 @@
-import {
-    createDesigner,
-    GlobalRegistry,
-    KeyCode,
-    Shortcut,
-} from '@dn/core';
+import { createDesigner, GlobalRegistry, KeyCode, Shortcut } from '@dn/core';
 import {
     ComponentTreeWidget, //主布局面板
     CompositePanel,
@@ -22,8 +17,6 @@ import {
     WorkspacePanel, //工作区布局面板
 } from '@dn/react';
 import { SettingsForm } from '@dn/react-settings-form';
-import 'antd/dist/antd.less';
-import React, { useMemo } from 'react';
 import {
     ArrayCards,
     ArrayTable,
@@ -53,6 +46,9 @@ import {
     TreeSelect,
     Upload,
 } from '@dncomponents/src';
+import 'antd/dist/antd.less';
+import React, { useMemo } from 'react';
+import './index.less';
 import { saveSchema } from './service';
 import {
     ActionsWidget,
@@ -234,7 +230,11 @@ const App = () => {
 };
 
 const HomePage: React.FC = () => {
-    return <div><App></App></div>;
+    return (
+        <div className="designcontainer">
+            <App />
+        </div>
+    );
 };
 
 export default HomePage;
