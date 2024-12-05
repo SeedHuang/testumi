@@ -46,7 +46,7 @@ import {
     TreeSelect,
     Upload,
 } from '@dncomponents/src';
-import 'antd/dist/antd.less';
+// import 'antd/dist/antd.less';
 import React, { useMemo } from 'react';
 import './index.less';
 import { saveSchema } from './service';

@@ -1,36 +1,36 @@
-import React from 'react'
-import { Space as FormilySpace } from '@formily/antd'
-import { createBehavior, createResource } from '@dn/core'
-import { DnFC } from '@dn/react'
-import { createVoidFieldSchema } from '../Field'
-import { withContainer } from '../../common/Container'
-import { AllSchemas } from '../../schemas'
-import { AllLocales } from '../../locales'
+import { createBehavior, createResource } from '@dn/core';
+import { DnFC } from '@dn/react';
+import { Space as FormilySpace } from '@formily/antd-v5';
+import React from 'react';
+import { withContainer } from '../../common/Container';
+import { AllLocales } from '../../locales';
+import { AllSchemas } from '../../schemas';
+import { createVoidFieldSchema } from '../Field';
 
 export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> =
-  withContainer(FormilySpace)
+    withContainer(FormilySpace);
 
 Space.Behavior = createBehavior({
-  name: 'Space',
-  extends: ['Field'],
-  selector: (node) => node.props['x-component'] === 'Space',
-  designerProps: {
-    droppable: true,
-    inlineChildrenLayout: true,
-    propsSchema: createVoidFieldSchema(AllSchemas.Space),
-  },
-  designerLocales: AllLocales.Space,
-})
+    name: 'Space',
+    extends: ['Field'],
+    selector: (node) => node.props['x-component'] === 'Space',
+    designerProps: {
+        droppable: true,
+        inlineChildrenLayout: true,
+        propsSchema: createVoidFieldSchema(AllSchemas.Space),
+    },
+    designerLocales: AllLocales.Space,
+});
 
 Space.Resource = createResource({
-  icon: 'SpaceSource',
-  elements: [
-    {
-      componentName: 'Field',
-      props: {
-        type: 'void',
-        'x-component': 'Space',
-      },
-    },
-  ],
-})
+    icon: 'SpaceSource',
+    elements: [
+        {
+            componentName: 'Field',
+            props: {
+                type: 'void',
+                'x-component': 'Space',
+            },
+        },
+    ],
+});
