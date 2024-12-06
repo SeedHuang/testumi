@@ -1,6 +1,5 @@
-import { GlobalRegistry } from '@dn/core'
-import zhCN from './zh-CN'
-import enUS from './en-US'
-import koKR from './ko-KR'
+import { GlobalRegistry } from '@dn/core';
+import enUS from './en-US';
+import zhCN from './zh-CN';
 
-GlobalRegistry.registerDesignerLocales(zhCN, enUS, koKR)
+GlobalRegistry.registerDesignerLocales(zhCN, enUS);

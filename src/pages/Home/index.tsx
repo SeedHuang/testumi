@@ -45,14 +45,13 @@ import {
     Transfer,
     TreeSelect,
     Upload,
-} from '@dncomponents/src';
+} from '@dncomponents';
 // import 'antd/dist/antd.less';
 import React, { useMemo } from 'react';
 import './index.less';
 import { saveSchema } from './service';
 import {
     ActionsWidget,
-    LogoWidget,
     MarkupSchemaWidget,
     PreviewWidget,
     SchemaEditorWidget,
@@ -98,7 +97,7 @@ const App = () => {
     );
     return (
         <Designer engine={engine}>
-            <StudioPanel logo={<LogoWidget />} actions={<ActionsWidget />}>
+            <StudioPanel actions={<ActionsWidget />}>
                 <CompositePanel>
                     <CompositePanel.Item
                         title="panels.Component"
