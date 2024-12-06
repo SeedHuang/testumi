@@ -5,7 +5,7 @@ import { createForm } from '@formily/core';
 import { createSchemaField } from '@formily/react';
 import * as antd5 from 'antd';
 import React, { useMemo } from 'react';
-import config from '../config';
+import config from '../../config';
 import { getComponentsExcepts } from './utils';
 
 const {

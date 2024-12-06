@@ -17,38 +17,12 @@ import {
     WorkspacePanel, //工作区布局面板
 } from '@dn/react';
 import { SettingsForm } from '@dn/react-settings-form';
-import {
-    ArrayCards,
-    ArrayTable,
-    Card,
-    Cascader,
-    Checkbox,
-    DatePicker,
-    Field,
-    Form,
-    FormCollapse,
-    FormGrid,
-    FormLayout,
-    FormTab,
-    Input,
-    NumberPicker,
-    ObjectContainer,
-    Password,
-    Radio,
-    Rate,
-    Select,
-    Slider,
-    Space,
-    Switch,
-    Text,
-    TimePicker,
-    Transfer,
-    TreeSelect,
-    Upload,
-} from '@dncomponents';
+import * as AllComponents from '@dncomponents';
+import config from './config';
 // import 'antd/dist/antd.less';
 import React, { useMemo } from 'react';
 import './index.less';
+import locales from './locales';
 import { saveSchema } from './service';
 import {
     ActionsWidget,
@@ -57,26 +31,23 @@ import {
     SchemaEditorWidget,
 } from './widgets';
 
-GlobalRegistry.registerDesignerLocales({
-    'zh-CN': {
-        sources: {
-            Inputs: '输入控件',
-            Layouts: '布局组件',
-            Arrays: '自增组件',
-            Displays: '展示组件',
-        },
-    },
-    'en-US': {
-        sources: {
-            Inputs: 'Inputs',
-            Layouts: 'Layouts',
-            Arrays: 'Arrays',
-            Displays: 'Displays',
-        },
-    },
-});
+const getComponents = (componentsNames: string[]): any[] => {
+    return componentsNames.map((componentName: string) => {
+        return AllComponents[componentName];
+    });
+};
 
-const App = () => {
+const getComponentSet = (componentsNames: string[]): any => {
+    const result: any = {};
+    componentsNames.forEach((componentName: string) => {
+        result[componentName] = AllComponents[componentName];
+    });
+    return result;
+};
+
+GlobalRegistry.registerDesignerLocales(locales);
+
+const DesignerCompoennt = () => {
     const engine = useMemo(
         () =>
             createDesigner({
@@ -86,7 +57,7 @@ const App = () => {
                             [KeyCode.Meta, KeyCode.S],
                             [KeyCode.Control, KeyCode.S],
                         ],
-                        handler(ctx) {
+                        handler(ctx: any) {
                             saveSchema(ctx.engine);
                         },
                     }),
@@ -103,46 +74,15 @@ const App = () => {
                         title="panels.Component"
                         icon="Component"
                     >
-                        <ResourceWidget
-                            title="sources.Inputs"
-                            sources={[
-                                Input,
-                                Password,
-                                NumberPicker,
-                                Rate,
-                                Slider,
-                                Select,
-                                TreeSelect,
-                                Cascader,
-                                Transfer,
-                                Checkbox,
-                                Radio,
-                                DatePicker,
-                                TimePicker,
-                                Upload,
-                                Switch,
-                                ObjectContainer,
-                            ]}
-                        />
-                        <ResourceWidget
-                            title="sources.Layouts"
-                            sources={[
-                                Card,
-                                FormGrid,
-                                FormTab,
-                                FormLayout,
-                                FormCollapse,
-                                Space,
-                            ]}
-                        />
-                        <ResourceWidget
-                            title="sources.Arrays"
-                            sources={[ArrayCards, ArrayTable]}
-                        />
-                        <ResourceWidget
-                            title="sources.Displays"
-                            sources={[Text]}
-                        />
+                        {config.panels['components.panels'].map(
+                            ({ title = '', components = [] }) => (
+                                <ResourceWidget
+                                    key={title}
+                                    title={title}
+                                    sources={getComponents(components)}
+                                />
+                            ),
+                        )}
                     </CompositePanel.Item>
                     <CompositePanel.Item
                         title="panels.OutlinedTree"
@@ -171,35 +111,9 @@ const App = () => {
                             <ViewPanel type="DESIGNABLE">
                                 {() => (
                                     <ComponentTreeWidget
-                                        components={{
-                                            Form,
-                                            Field,
-                                            Input,
-                                            Select,
-                                            TreeSelect,
-                                            Cascader,
-                                            Radio,
-                                            Checkbox,
-                                            Slider,
-                                            Rate,
-                                            NumberPicker,
-                                            Transfer,
-                                            Password,
-                                            DatePicker,
-                                            TimePicker,
-                                            Upload,
-                                            Switch,
-                                            Text,
-                                            Card,
-                                            ArrayCards,
-                                            ArrayTable,
-                                            Space,
-                                            FormTab,
-                                            FormCollapse,
-                                            FormGrid,
-                                            FormLayout,
-                                            ObjectContainer,
-                                        }}
+                                        components={getComponentSet(
+                                            config.designableComponents,
+                                        )}
                                     />
                                 )}
                             </ViewPanel>
@@ -231,7 +145,7 @@ const App = () => {
 const HomePage: React.FC = () => {
     return (
         <div className="designcontainer">
-            <App />
+            <DesignerCompoennt />
         </div>
     );
 };
