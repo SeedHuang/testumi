@@ -7,7 +7,9 @@ import { AllLocales } from '../../locales';
 import { AllSchemas } from '../../schemas';
 import { createVoidFieldSchema } from '../Field';
 
-export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
+export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (
+    props: any,
+) => {
     return (
         <AntdCard
             {...props}
@@ -25,7 +27,7 @@ export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
 Card.Behavior = createBehavior({
     name: 'Card',
     extends: ['Field'],
-    selector: (node) => node.props['x-component'] === 'Card',
+    selector: (node: any) => node.props['x-component'] === 'Card',
     designerProps: {
         droppable: true,
         propsSchema: createVoidFieldSchema(AllSchemas.Card),

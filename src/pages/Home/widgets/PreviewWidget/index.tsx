@@ -1,6 +1,7 @@
 import { TreeNode } from '@dn/core';
 import { transformToSchema } from '@dn/formily-transformer';
 import * as formilyAntd5 from '@formily/antd-v5';
+import { Editable, Form, FormItem, PreviewText } from '@formily/antd-v5';
 import { createForm } from '@formily/core';
 import { createSchemaField } from '@formily/react';
 import * as antd5 from 'antd';
@@ -17,7 +18,7 @@ const {
         antd5x: { includes: antd5s },
     },
 } = config;
-console.log(formilyAntd5s);
+
 const Text: React.FC<{
     value?: string;
     content?: string;
@@ -26,7 +27,6 @@ const Text: React.FC<{
     const tagName = mode === 'normal' || !mode ? 'div' : mode;
     return React.createElement(tagName, props, value || content);
 };
-const { Form } = formilyAntd5;
 
 const SchemaField = createSchemaField({
     components: {
@@ -37,6 +37,9 @@ const SchemaField = createSchemaField({
         ),
         ...getComponentsExcepts(antd5, antd5s),
         Text,
+        PreviewText,
+        Editable,
+        FormItem,
     },
 });
 

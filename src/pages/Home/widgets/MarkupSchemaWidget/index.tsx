@@ -70,10 +70,11 @@ const transformToMarkupSchemaCode = (tree: TreeNode) => {
     const root = tree.find((child) => {
         return child.componentName === 'Form' || child.componentName === 'Root';
     });
-    return `import React, { useMemo } from 'react'
+    const templateStr = `import React, { useMemo } from 'react'
 import { createForm } from '@formily/core'
 import { createSchemaField } from '@formily/react'
 import { ${getComponentsExcepts(formilyAntd5s)} } from '@formily/antd-v5'
+import { PreviewText, Form, Editable, FormItem, } from '@formily/antd-v5'
 import { ${getComponentsExcepts(antd5s)} } from 'antd'
 
 const Text: React.FC<{
@@ -106,6 +107,8 @@ export default ()=>{
 }
   
 `;
+    console.log(templateStr);
+    return templateStr;
 };
 
 export const MarkupSchemaWidget: React.FC<IMarkupSchemaWidgetProps> = (
