@@ -13,6 +13,8 @@ export default defineConfig({
     alias: {
         '@dncomponents': resolve('/src/pages/Home/dncomponents'),
         '@dn': resolve('/src/pages/Home/dn'),
+        '@allLocales': resolve('/src/pages/Home/dncomponents/locales'),
+        '@allSchemas': resolve('/src/pages/Home/dncomponents/schemas'),
     },
     theme: {
         'global.less': require.resolve('./src/global.less'),

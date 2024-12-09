@@ -107,7 +107,6 @@ export default ()=>{
 }
   
 `;
-    console.log(templateStr);
     return templateStr;
 };
 

@@ -12,10 +12,10 @@ import { TabPaneProps, TabsProps } from 'antd/lib/tabs';
 import React, { Fragment, useState } from 'react';
 import { LoadTemplate } from '../../common/LoadTemplate';
 import { useDropTemplate } from '../../hooks';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { matchComponent } from '../../shared';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 const parseTabs = (parent: TreeNode) => {
     const tabs: TreeNode[] = [];
@@ -146,9 +146,9 @@ FormTab.Behavior = createBehavior(
                 source.every(
                     (node) => node.props['x-component'] === 'FormTab.TabPane',
                 ),
-            propsSchema: createVoidFieldSchema(AllSchemas.FormTab),
+            propsSchema: createVoidFieldSchema(schemas.FormTab),
         },
-        designerLocales: AllLocales.FormTab,
+        designerLocales: locales.FormTab,
     },
     {
         name: 'FormTab.TabPane',
@@ -157,9 +157,9 @@ FormTab.Behavior = createBehavior(
         designerProps: {
             droppable: true,
             allowDrop: (node) => node.props['x-component'] === 'FormTab',
-            propsSchema: createVoidFieldSchema(AllSchemas.FormTab.TabPane),
+            propsSchema: createVoidFieldSchema(schemas.FormTab.TabPane),
         },
-        designerLocales: AllLocales.FormTabPane,
+        designerLocales: locales.FormTabPane,
     },
 );
 

@@ -13,10 +13,10 @@ import { CollapsePanelProps, CollapseProps } from 'antd/lib/collapse';
 import React, { Fragment, useState } from 'react';
 import { LoadTemplate } from '../../common/LoadTemplate';
 import { useDropTemplate } from '../../hooks';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { matchComponent } from '../../shared';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 const parseCollapse = (parent: TreeNode) => {
     const tabs: TreeNode[] = [];
@@ -139,9 +139,9 @@ FormCollapse.Behavior = createBehavior(
                         node.props['x-component'] ===
                         'FormCollapse.CollapsePanel',
                 ),
-            propsSchema: createVoidFieldSchema(AllSchemas.FormCollapse),
+            propsSchema: createVoidFieldSchema(schemas.FormCollapse),
         },
-        designerLocales: AllLocales.FormCollapse,
+        designerLocales: locales.FormCollapse,
     },
     {
         name: 'FormCollapse.CollapsePanel',
@@ -152,10 +152,10 @@ FormCollapse.Behavior = createBehavior(
             droppable: true,
             allowDrop: (node) => node.props['x-component'] === 'FormCollapse',
             propsSchema: createVoidFieldSchema(
-                AllSchemas.FormCollapse.CollapsePanel,
+                schemas.FormCollapse.CollapsePanel,
             ),
         },
-        designerLocales: AllLocales.FormCollapsePanel,
+        designerLocales: locales.FormCollapsePanel,
     },
 );
 

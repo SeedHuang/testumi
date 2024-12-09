@@ -1,5 +1,5 @@
 import { createLocales } from '@dn/core';
-import { DatePicker } from './DatePicker';
+import { DatePicker } from '@dncomponents/components/DatePicker/locales';
 
 export const TimePicker = createLocales(DatePicker, {
     'zh-CN': {

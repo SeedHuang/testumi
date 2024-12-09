@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { DatePicker as FormilyDatePicker } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const DatePicker: DnFC<React.ComponentProps<typeof FormilyDatePicker>> =
     FormilyDatePicker;
@@ -15,9 +15,9 @@ DatePicker.Behavior = createBehavior(
         extends: ['Field'],
         selector: (node) => node.props['x-component'] === 'DatePicker',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.DatePicker),
+            propsSchema: createFieldSchema(schemas.DatePicker),
         },
-        designerLocales: AllLocales.DatePicker,
+        designerLocales: locales.DatePicker,
     },
     {
         name: 'DatePicker.RangePicker',
@@ -25,9 +25,9 @@ DatePicker.Behavior = createBehavior(
         selector: (node) =>
             node.props['x-component'] === 'DatePicker.RangePicker',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.DatePicker.RangePicker),
+            propsSchema: createFieldSchema(schemas.DatePicker.RangePicker),
         },
-        designerLocales: AllLocales.DateRangePicker,
+        designerLocales: locales.DateRangePicker,
     },
 );
 

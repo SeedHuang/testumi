@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { Upload as FormilyUpload } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> =
     FormilyUpload;
@@ -15,18 +15,18 @@ Upload.Behavior = createBehavior(
         extends: ['Field'],
         selector: (node) => node.props['x-component'] === 'Upload',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.Upload),
+            propsSchema: createFieldSchema(schemas.Upload),
         },
-        designerLocales: AllLocales.Upload,
+        designerLocales: locales.Upload,
     },
     {
         name: 'Upload.Dragger',
         extends: ['Field'],
         selector: (node) => node.props['x-component'] === 'Upload.Dragger',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.Upload.Dragger),
+            propsSchema: createFieldSchema(schemas.Upload.Dragger),
         },
-        designerLocales: AllLocales.UploadDragger,
+        designerLocales: locales.UploadDragger,
     },
 );
 

@@ -3,9 +3,9 @@ import { DnFC } from '@dn/react';
 import { Space as FormilySpace } from '@formily/antd-v5';
 import React from 'react';
 import { withContainer } from '../../common/Container';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Space: DnFC<React.ComponentProps<typeof FormilySpace>> =
     withContainer(FormilySpace);
@@ -17,9 +17,9 @@ Space.Behavior = createBehavior({
     designerProps: {
         droppable: true,
         inlineChildrenLayout: true,
-        propsSchema: createVoidFieldSchema(AllSchemas.Space),
+        propsSchema: createVoidFieldSchema(schemas.Space),
     },
-    designerLocales: AllLocales.Space,
+    designerLocales: locales.Space,
 });
 
 Space.Resource = createResource({

@@ -13,8 +13,6 @@ import cls from 'classnames';
 import React from 'react';
 import { LoadTemplate } from '../../common/LoadTemplate';
 import { useDropTemplate } from '../../hooks';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import {
     createEnsureTypeItemsNode,
     findNodeByComponentPath,
@@ -23,6 +21,8 @@ import {
 } from '../../shared';
 import { createArrayBehavior } from '../ArrayBase';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 import './styles.less';
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object');
@@ -468,9 +468,9 @@ ArrayTable.Behavior = createBehavior(createArrayBehavior('ArrayTable'), {
         allowDrop: (node) =>
             node.props['type'] === 'object' &&
             node.parent?.props?.['x-component'] === 'ArrayTable',
-        propsSchema: createVoidFieldSchema(AllSchemas.ArrayTable.Column),
+        propsSchema: createVoidFieldSchema(schemas.ArrayTable.Column),
     },
-    designerLocales: AllLocales.ArrayTableColumn,
+    designerLocales: locales.ArrayTableColumn,
 });
 
 ArrayTable.Resource = createResource({

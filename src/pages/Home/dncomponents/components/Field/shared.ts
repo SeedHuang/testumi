@@ -1,3 +1,4 @@
+import { AllSchemas } from '@allSchemas';
 import {
     DataSourceSetter,
     ReactionsSetter,
@@ -5,7 +6,6 @@ import {
 } from '@dn/formily-setters';
 import { ISchema } from '@formily/json-schema';
 import { FormItemSwitcher } from '../../common/FormItemSwitcher';
-import { AllSchemas } from '../../schemas';
 
 export const createComponentSchema = (
     component: ISchema,

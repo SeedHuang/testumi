@@ -15,7 +15,7 @@ import {
 import { toJS } from '@formily/reactive';
 import { each, reduce } from '@formily/shared';
 import { Container } from '../../common/Container';
-import { AllLocales } from '../../locales';
+import * as locales from './locales';
 
 Schema.silent(true);
 
@@ -162,5 +162,5 @@ export const Field: DnFC<ISchema> = observer((props) => {
 Field.Behavior = createBehavior({
     name: 'Field',
     selector: 'Field',
-    designerLocales: AllLocales.Field,
+    designerLocales: locales.Field,
 });

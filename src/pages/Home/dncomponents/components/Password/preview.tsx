@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { Password as FormilyPassword } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Password: DnFC<React.ComponentProps<typeof FormilyPassword>> =
     FormilyPassword;
@@ -14,9 +14,9 @@ Password.Behavior = createBehavior({
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Password',
     designerProps: {
-        propsSchema: createFieldSchema(AllSchemas.Password),
+        propsSchema: createFieldSchema(schemas.Password),
     },
-    designerLocales: AllLocales.Password,
+    designerLocales: locales.Password,
 });
 
 Password.Resource = createResource({

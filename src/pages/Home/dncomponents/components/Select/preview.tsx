@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { Select as FormilySelect } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Select: DnFC<React.ComponentProps<typeof FormilySelect>> =
     FormilySelect;
@@ -14,9 +14,9 @@ Select.Behavior = createBehavior({
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Select',
     designerProps: {
-        propsSchema: createFieldSchema(AllSchemas.Select),
+        propsSchema: createFieldSchema(schemas.Select),
     },
-    designerLocales: AllLocales.Select,
+    designerLocales: locales.Select,
 });
 
 Select.Resource = createResource({

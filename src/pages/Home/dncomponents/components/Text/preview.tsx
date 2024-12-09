@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import cls from 'classnames';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 import './styles.less';
 
 export interface IDesignableTextProps {
@@ -33,9 +33,9 @@ Text.Behavior = createBehavior({
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Text',
     designerProps: {
-        propsSchema: createVoidFieldSchema(AllSchemas.Text),
+        propsSchema: createVoidFieldSchema(schemas.Text),
     },
-    designerLocales: AllLocales.Text,
+    designerLocales: locales.Text,
 });
 
 Text.Resource = createResource({

@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { TimePicker as FormilyTimePicker } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const TimePicker: DnFC<React.ComponentProps<typeof FormilyTimePicker>> =
     FormilyTimePicker;
@@ -15,9 +15,9 @@ TimePicker.Behavior = createBehavior(
         extends: ['Field'],
         selector: (node) => node.props['x-component'] === 'TimePicker',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.TimePicker),
+            propsSchema: createFieldSchema(schemas.TimePicker),
         },
-        designerLocales: AllLocales.TimePicker,
+        designerLocales: locales.TimePicker,
     },
     {
         name: 'TimePicker.RangePicker',
@@ -25,9 +25,9 @@ TimePicker.Behavior = createBehavior(
         selector: (node) =>
             node.props['x-component'] === 'TimePicker.RangePicker',
         designerProps: {
-            propsSchema: createFieldSchema(AllSchemas.TimePicker.RangePicker),
+            propsSchema: createFieldSchema(schemas.TimePicker.RangePicker),
         },
-        designerLocales: AllLocales.TimeRangePicker,
+        designerLocales: locales.TimeRangePicker,
     },
 );
 

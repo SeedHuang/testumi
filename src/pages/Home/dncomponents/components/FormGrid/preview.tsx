@@ -4,9 +4,9 @@ import { FormGrid as FormilyGird } from '@formily/antd-v5';
 import { observer } from '@formily/reactive-react';
 import React from 'react';
 import { LoadTemplate } from '../../common/LoadTemplate';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 import './styles.less';
 
 type formilyGrid = typeof FormilyGird;
@@ -59,9 +59,9 @@ FormGrid.Behavior = createBehavior(
         designerProps: {
             droppable: true,
             allowDrop: (node) => node.props['x-component'] !== 'FormGrid',
-            propsSchema: createFieldSchema(AllSchemas.FormGrid),
+            propsSchema: createFieldSchema(schemas.FormGrid),
         },
-        designerLocales: AllLocales.FormGrid,
+        designerLocales: locales.FormGrid,
     },
     {
         name: 'FormGrid.GridColumn',
@@ -95,9 +95,9 @@ FormGrid.Behavior = createBehavior(
             resizeMin: 1,
             resizeMax: 12,
             allowDrop: (node) => node.props['x-component'] === 'FormGrid',
-            propsSchema: createFieldSchema(AllSchemas.FormGrid.GridColumn),
+            propsSchema: createFieldSchema(schemas.FormGrid.GridColumn),
         },
-        designerLocales: AllLocales.FormGridColumn,
+        designerLocales: locales.FormGridColumn,
     },
 );
 
