@@ -4,8 +4,10 @@ import { Form as FormilyForm } from '@formily/antd-v5';
 import { createForm } from '@formily/core';
 import { observer } from '@formily/react';
 import React, { useMemo } from 'react';
-import { AllLocales } from '../../locales';
 import { AllSchemas } from '../../schemas';
+// 这个需要确认
+import * as formlayoutSchema from '@dncomponents/components/FormLayout/schemas';
+import * as locales from './locales';
 import './styles.less';
 
 export const Form: DnFC<React.ComponentProps<typeof FormilyForm>> = observer(
@@ -43,7 +45,7 @@ Form.Behavior = createBehavior({
             propsSchema: {
                 type: 'object',
                 properties: {
-                    ...(AllSchemas.FormLayout.properties as any),
+                    ...(formlayoutSchema.FormLayout.properties as any),
                     style: AllSchemas.CSSStyle,
                 },
             },
@@ -53,7 +55,7 @@ Form.Behavior = createBehavior({
             },
         };
     },
-    designerLocales: AllLocales.Form,
+    designerLocales: locales.Form,
 });
 
 Form.Resource = createResource({

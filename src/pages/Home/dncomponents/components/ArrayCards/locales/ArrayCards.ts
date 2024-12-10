@@ -1,5 +1,5 @@
 import { createLocales } from '@dn/core';
-import { Card } from './Card';
+import { Card } from '@dncomponents/components/Card/locales';
 
 export const ArrayCards = createLocales(Card, {
     'zh-CN': {

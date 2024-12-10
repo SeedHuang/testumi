@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { TreeSelect as FormilyTreeSelect } from '@formily/antd-v5';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> =
     FormilyTreeSelect;
@@ -14,9 +14,9 @@ TreeSelect.Behavior = createBehavior({
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'TreeSelect',
     designerProps: {
-        propsSchema: createFieldSchema(AllSchemas.TreeSelect),
+        propsSchema: createFieldSchema(schemas.TreeSelect),
     },
-    designerLocales: AllLocales.TreeSelect,
+    designerLocales: locales.TreeSelect,
 });
 
 TreeSelect.Resource = createResource({

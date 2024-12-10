@@ -1,5 +1,5 @@
 import { createLocales } from '@dn/core';
-import { Input } from './Input';
+import { Input } from '@dncomponents/components/Input/locales';
 
 export const Password = createLocales(Input, {
     'zh-CN': {

@@ -3,9 +3,11 @@ import React from 'react';
 
 import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
+// import { AllLocales } from '../../locales';
+// import { AllSchemas } from '../../schemas';
 import { createVoidFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (
     props: any,
@@ -30,9 +32,9 @@ Card.Behavior = createBehavior({
     selector: (node: any) => node.props['x-component'] === 'Card',
     designerProps: {
         droppable: true,
-        propsSchema: createVoidFieldSchema(AllSchemas.Card),
+        propsSchema: createVoidFieldSchema(schemas.Card),
     },
-    designerLocales: AllLocales.Card,
+    designerLocales: locales.Card,
 });
 
 Card.Resource = createResource({

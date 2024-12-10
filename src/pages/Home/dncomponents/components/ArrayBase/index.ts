@@ -1,7 +1,11 @@
 import { createBehavior } from '@dn/core';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
-import { createFieldSchema, createVoidFieldSchema } from '../Field';
+import {
+    createFieldSchema,
+    createVoidFieldSchema,
+} from '@dncomponents/components/Field';
+import * as allLocales from './locales';
+import * as locales from './locales';
+import * as allSchemas from './schemas';
 
 export const createArrayBehavior = (name: string) => {
     return createBehavior(
@@ -11,9 +15,9 @@ export const createArrayBehavior = (name: string) => {
             selector: (node) => node.props['x-component'] === name,
             designerProps: {
                 droppable: true,
-                propsSchema: createFieldSchema(AllSchemas[name]),
+                propsSchema: createFieldSchema(allSchemas[name]),
             },
-            designerLocales: AllLocales[name],
+            designerLocales: allLocales[name],
         },
         {
             name: `${name}.Addition`,
@@ -24,9 +28,9 @@ export const createArrayBehavior = (name: string) => {
                 allowDrop(parent) {
                     return parent.props['x-component'] === name;
                 },
-                propsSchema: createVoidFieldSchema(AllSchemas[name].Addition),
+                propsSchema: createVoidFieldSchema(allSchemas[name].Addition),
             },
-            designerLocales: AllLocales.ArrayAddition,
+            designerLocales: locales.ArrayAddition,
         },
         {
             name: `${name}.Remove`,
@@ -38,7 +42,7 @@ export const createArrayBehavior = (name: string) => {
                 },
                 propsSchema: createVoidFieldSchema(),
             },
-            designerLocales: AllLocales.ArrayRemove,
+            designerLocales: locales.ArrayRemove,
         },
         {
             name: `${name}.Index`,
@@ -50,7 +54,7 @@ export const createArrayBehavior = (name: string) => {
                 },
                 propsSchema: createVoidFieldSchema(),
             },
-            designerLocales: AllLocales.ArrayIndex,
+            designerLocales: locales.ArrayIndex,
         },
         {
             name: `${name}.MoveUp`,
@@ -62,7 +66,7 @@ export const createArrayBehavior = (name: string) => {
                 },
                 propsSchema: createVoidFieldSchema(),
             },
-            designerLocales: AllLocales.ArrayMoveUp,
+            designerLocales: locales.ArrayMoveUp,
         },
         {
             name: `${name}.MoveDown`,
@@ -75,7 +79,7 @@ export const createArrayBehavior = (name: string) => {
                 },
                 propsSchema: createVoidFieldSchema(),
             },
-            designerLocales: AllLocales.ArrayMoveDown,
+            designerLocales: locales.ArrayMoveDown,
         },
     );
 };

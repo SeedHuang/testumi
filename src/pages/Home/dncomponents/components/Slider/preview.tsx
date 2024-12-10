@@ -2,9 +2,9 @@ import { createBehavior, createResource } from '@dn/core';
 import { DnFC } from '@dn/react';
 import { Slider as AntdSlider } from 'antd';
 import React from 'react';
-import { AllLocales } from '../../locales';
-import { AllSchemas } from '../../schemas';
 import { createFieldSchema } from '../Field';
+import * as locales from './locales';
+import * as schemas from './schemas';
 
 export const Slider: DnFC<React.ComponentProps<typeof AntdSlider>> = AntdSlider;
 
@@ -13,9 +13,9 @@ Slider.Behavior = createBehavior({
     extends: ['Field'],
     selector: (node) => node.props['x-component'] === 'Slider',
     designerProps: {
-        propsSchema: createFieldSchema(AllSchemas.Slider),
+        propsSchema: createFieldSchema(schemas.Slider),
     },
-    designerLocales: AllLocales.Slider,
+    designerLocales: locales.Slider,
 });
 
 Slider.Resource = createResource({

@@ -77,6 +77,7 @@ import { ${getComponentsExcepts(formilyAntd5s)} } from '@formily/antd-v5'
 import { PreviewText, Form, Editable, FormItem, } from '@formily/antd-v5'
 import { ${getComponentsExcepts(antd5s)} } from 'antd'
 
+
 const Text: React.FC<{
   value?: string
   content?: string
@@ -107,7 +108,6 @@ export default ()=>{
 }
   
 `;
-    console.log(templateStr);
     return templateStr;
 };
 

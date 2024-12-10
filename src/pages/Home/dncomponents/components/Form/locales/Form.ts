@@ -1,5 +1,5 @@
+import { Component } from '@allLocales/Component';
 import { createLocales } from '@dn/core';
-import { Component } from './Component';
 
 export const Form = createLocales(Component, {
     'zh-CN': {
